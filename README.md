@@ -42,16 +42,13 @@ npm run preview
 
 ## GitHub Pages deployment
 
-This project is configured for a repository GitHub Pages site at `/decode-encode/` via `base: '/decode-encode/'` in `vite.config.ts`.
+This project is configured for a repository GitHub Pages site at `/decode-encode/` via `base: '/decode-encode/'` in `vite.config.ts`. If you publish this as a user or organization root page instead, change the Vite `base` value to `/`.
 
-1. Install dependencies with `npm install`.
-2. Confirm `vite.config.ts` has the correct `base` value:
-   - Use `/decode-encode/` for a project page like `https://USER.github.io/decode-encode/`.
-   - Use `/` for a user or organization root page like `https://USER.github.io/`.
-3. Run:
+Deployment is handled by the GitHub Actions workflow in `.github/workflows/deploy.yml`. On pushes to the default branch (`main`), the workflow installs dependencies, runs `npm run build`, uploads the generated `dist/` directory, and deploys it with the official GitHub Pages actions.
 
-```bash
-npm run deploy
-```
+To enable deployment in GitHub:
 
-The deploy script builds the app and publishes `dist/` with the `gh-pages` package. In GitHub repository settings, set Pages to serve from the `gh-pages` branch.
+1. Open the repository **Settings** tab.
+2. Go to **Pages**.
+3. Set **Build and deployment** → **Source** to **GitHub Actions**.
+4. Push changes to `main` or manually run the **Deploy to GitHub Pages** workflow.
